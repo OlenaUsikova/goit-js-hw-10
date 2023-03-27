@@ -15,15 +15,31 @@ inputEl.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(ev) {
     ev.preventDefault();
     const countryName = ev.target.value.trim();
-    if (countryName === '') {
+        if (countryName === '') {
         divEl.innerHTML = "";
         listEl.innerHTML = ""
-    } else if (countryName.length > 10){
-        Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
-    } else if (countryName.length >= 2 && countryName.length <= 10){
-        
-    }
+    }  fetchCountries(countryName).then((countriesObj) => {
+                        let backup = ``;
+                        if (countriesObj.length > 10){
+                            Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
+                        } else if (countriesObj.length >= 2 && countriesObj.length <= 10){
+                             
+                            countriesObj.forEach((countryItem) => {
+            backup += `<li><img  class="itemFlag" src="${countryItem.flags.svg}" alt="${countryItem.name.common}" /><p>${countryItem.name.official}"</p></li>`;
+        }); 
+        listEl.innerHTML = backup;}
+        else{ countriesObj.map((country) => {
+            listEl.innerHTML = "";
+                card += `<ul>
+                <li><img  class="flag" src="${country.flags.svg}" alt="${country.name.common}" /><p>${country.name.official}"</p></li>
+                <li><p>Capital: ${country.capital}</p></li>
+                <li><p>Population: ${country.population}</p></li>
+                <li><p>Languages: ${country.languages}</p></li>
+                </ul>`;
+            }); 
+            divEl.innerHTML = card;}
+        }
+                    )}
+                    
     
-     fetchCountries(countryName)
-    .then(countriesObj => {console.log(countriesObj)})}
-   
+
