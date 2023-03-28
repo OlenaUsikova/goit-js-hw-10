@@ -18,16 +18,21 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
-itemFlag {
-width: 70px;
-}
-flag {
-  width: 200px;
+
+.flag {
+  width: 70px;
 }
 ul {
   list-style-type: none
 }
 
-p{
+p {
   font-size: 18px;
+}
+h1 {
+  font-size: 22px;
+}
+.country__list{
+  display: flex;
+  gap: 15px;
 }
