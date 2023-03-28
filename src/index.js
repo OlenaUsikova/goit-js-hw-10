@@ -18,6 +18,9 @@ function onSearch(ev) {
   if (countryName === '') {
     divEl.innerHTML = '';
     listEl.innerHTML = '';
+    Notiflix.Notify.warning(
+        'Please enter the name of the country.'
+      );
     return;
   }
   fetchCountries(countryName).then(countriesObj => {
