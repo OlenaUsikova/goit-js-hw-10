@@ -20,7 +20,7 @@ body {
 }
 
 .flag {
-  width: 70px;
+  width: 80px;
 }
 ul {
   list-style-type: none;
@@ -36,4 +36,7 @@ h1 {
 .country__list{
   display: flex;
   gap: 15px;
+}
+li {
+  margin: 15px;
 }
